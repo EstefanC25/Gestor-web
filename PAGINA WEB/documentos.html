@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <body id class="documentos">
+      <img src="img/rojo.jpg" alt="Imagen de fondo" class="fondo">
+
+    <head>
+        <title>Documentos</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="estilos.css">
+        
+    </head>
+
+    <header> 
+        <h1>Archivos pdf</h1>
+        <p> En este espacio encontrara documentos tecnicos, manuales y formularios 
+          que pueden visualizar o descargar segun sus necesidades</p>
+    </header><br><br>
+     
+    <main class="contenido">
+      <div class="label-contenedor">
+      <img src="img/icon.png" alt="Ícono orden" class="icono">
+      <label for="ordenSelect">ORDENES MES DE MAYO:</label>
+      </div>
+<select id="ordenSelect">
+  <option value="">-- Selecciona un archivo --</option>
+  <option value="docs/BOGTR_32.pdf">BOGTR 32</option>
+  <option value="docs/BOGTR_33.pdf">BOGTR_33</option>
+  <option value="docs/BOGTR_34.pdf">BOGTR_34</option>
+</select>
+
+<button onclick="abrirPDF('ordenSelect')">Abrir PDF</button>
+
+  </script><br><br>
+<div class="label-contenedor">
+<img src="img/icon.png" alt="Ícono orden" class="icono">
+<label for="pdfSelect">LECCIONES APRENDIDAS:</label>
+</div>
+<select id="pdfSelect">
+  <option value="">-- Selecciona un archivo --</option>
+  <option value="docs2/124.pdf">LECCION APRENDIDA 124</option>
+  <option value="docs2/146.pdf">LECCION APRENDIDA 146</option>
+  <option value="docs2/148.pdf">LECCION APRENDIDA 148</option>
+</select>
+
+<button onclick="abrirPDF('pdfSelect')">Abrir PDF</button>
+
+    <script>
+        function abrirPDF(selectid) {
+          const selector = document.getElementById(selectid);
+          const archivo = selector.value;
+          if (archivo) {
+            window.open(archivo, "_blank");
+          } else {
+            alert("Por favor, selecciona un documento.");
+          }
+        }
+       
+      </script><br>
+      </main>
+      <br>
+      <div class="imgdoc">
+        <img src="img/images.jpeg" alt="Imagen de ejemplo" width="300px" height="100px">
+      </div>
+    </body>  
+    
+</html>    

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulario</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="estilos.css">
+        
+    </head>
+    <body class="formulario-body">
+     <img src="img/foto1.jpg" alt="Imagen de fondo" class="imagen-fondo">
+
+
+  <form action="guardar.php" method="post" enctype="multipart/form-data">
+    <div class="galeria1">
+    <img src="img/imagen.jpg" alt="Imagen de ejemplo" width="300px" height="200px"> 
+    </div>
+    <br>
+  <label>Nombre completo</label>
+  <br>
+  <select id="Nombre" name="Nombre" id="Nombre" required>
+      <option value=""></option>
+      <option value="Estefan Contreras"> Estefan Contreras Rodriguez </option>
+      <option value="Luna Montoya">Luna Montoya Gomez</option>
+      <option value="Anthony Contreras">Anthony Felipe Contreras</option>
+      <option value="Yuri Gomez">Yuri Paola Gomez</option>
+    </select>
+  <br><br>
+  <label>Documento de identidad</label><br>
+  <input type="number"> <br><br>
+  <label>Tipo de archivo</label><br>
+  <input type="text" name="Correo"><br><br>
+  <label>Subir archivo PDF:</label>
+  <div class="centrado">
+    <input type="file" name="archivo" accept="application/pdf" required>
+  </div><br>
+  <div><input type="submit" value="Enviar"></div>
+  </form>
+  <body>
+<html>
+  
