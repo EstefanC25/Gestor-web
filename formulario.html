@@ -3,21 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario Técnico</title>
-    <link rel="stylesheet" href="estilos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Estilo del popup -->
+    <style>
+        #popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+            font-weight: bold;
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
 </head>
 
-
 <body class="form-page">
-
-    
 
 <div class="container">
     <h2>Registro de Material Técnico</h2>
     
-    
-    <form action="https://script.google.com/macros/s/AKfycbyn0dylC1UIXGYD62hahowOJ_mbRfT3-QxMcVs_-nEqRx5SO-hng0CcjTAtFpsBK5TSug/exec" method="POST">
-      
+    <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbyn0dylC1UIXGYD62hahowOJ_mbRfT3-QxMcVs_-nEqRx5SO-hng0CcjTAtFpsBK5TSug/exec" method="POST">
+
         <label>EDIFICIO:</label>
         <input type="text" name="Edificio" required>
 
@@ -26,17 +47,17 @@
 
         <label>RUTA:</label>
         <select name="Ruta" required>
-    <option value="">Seleccione una ruta</option>
-    <option value="32">BOG_TR32</option>
-    <option value="33">BOG_TR33</option>
-    <option value="34">BOG_TR34</option>
-    <option value="35">BOG_TR35</option>
-    <option value="36">BOG_TR36</option>
-    <option value="36">BOG_TR43N</option>
-    <option value="36">BOG_TR44N</option>
-    <option value="36">BOG_TR45N</option>
-    <option value="36">BOG_TR46N</option>
-</select>
+            <option value="">Seleccione una ruta</option>
+            <option value="32">BOG_TR32</option>
+            <option value="33">BOG_TR33</option>
+            <option value="34">BOG_TR34</option>
+            <option value="35">BOG_TR35</option>
+            <option value="36">BOG_TR36</option>
+            <option value="43">BOG_TR43N</option>
+            <option value="44">BOG_TR44N</option>
+            <option value="45">BOG_TR45N</option>
+            <option value="46">BOG_TR46N</option>
+        </select>
 
         <label>ORDEN:</label>
         <input type="text" name="Orden" required>
@@ -51,6 +72,37 @@
 
     </form>
 </div>
+
+<!-- Popup de éxito -->
+<div id="popup">✅ Registro enviado correctamente</div>
+
+<!-- Script -->
+<script>
+document.getElementById("miFormulario").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = this;
+    const data = new FormData(form);
+
+    fetch(form.action, {
+        method: "POST",
+        body: data
+    })
+    .then(response => {
+        form.reset();
+
+        const popup = document.getElementById("popup");
+        popup.style.display = "block";
+
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 3000);
+    })
+    .catch(error => {
+        alert("❌ Error al enviar el registro");
+    });
+});
+</script>
 
 </body>
 </html>
