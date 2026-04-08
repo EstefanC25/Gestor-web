@@ -1,45 +1,63 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Gestor de mantenimiento</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="estilos.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-    </head>
-    <body class="principal">
-        <img src="img/ascensor.jpg" alt="Imagen de fondo" class="fondo">
-        
-        <header>
-         <nav><br>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión Documental</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="estilos.css">
+</head>
 
-            <h1 class="titulop">GESTION DOCUMENTAL</h1><br>
-            <ul id="menu">
-                <li><a href="inicio.html"  target="_blank">Inicio</a></li>
-                <li><a href="contacto.html" target="_blank" >Contacto</a></li>
-                <li><a href="https://whatsform.com/zg8wlv" target="_blank">Solicitud de materiales</a></li>
-                <li><a href="documentos.html" target="_blank">Documentos</a></li>
-                <li><a href="formulario.html" target="_blank"> Ir al Formulario</a></li>
-            </ul><br>
-            </nav>
-            
-            
-         </header>
+<body>
 
-        <main> 
-        <div class="galeria">
-    <img src="img/descarga.png" alt="">
-    <img src="img/mano.avif" alt="">
-    <img src="img/energia.avif" alt="">
-        </div>  
-        </main><br>
+    <img src="img/ascensor.jgp.avif" alt="Descripción de la imagen">
+
+<!-- =======================
+     MENÚ LATERAL
+======================= -->
+<div class="sidebar" id="sidebar">
+
+<ul>
+<li><a href="#"> Inicio</a></li>
+<li><div class="dropdown-btn"> Servicios ▾</div>
+<ul class="submenu">
 
 
+<li><a href="https://whatsform.com/zg8wlv" target="_blank" rel="noopener noreferrer">  Solicitud de materiales </a> </li>
+<li><a href="formulario.html" target="_blank" rel="noopener noreferrer">  Ingreso a almacén</a></li>
+<li><a href="https://forms.office.com/r/6N2JcFVuCE?origin=lprLink" target="_blank" rel="noopener noreferrer"> Préstamos de iluminación</a></li>
+</ul></li>
 
-    <footer><br>
-        <div class="footer">
-            © 2026 Tu Empresa
-        </div>
-    </footer><br>
-    </body>
+<li><a href="leccion.html"target="_blank" rel="noopener noreferrer">Lecciones Aprendidas</a></li>
+    </ul>
+</div>
+
+<!-- BOTÓN -->
+<button class="open-btn" onclick="toggleMenu()">☰</button>
+
+<!-- CONTENIDO -->
+<div class="main-content">
+    <header>
+        <h1>Gestión Documental</h1>
+        <p>Sistema de control de procesos</p>
+    </header>
+</div>
+
+<!-- =======================
+     JAVASCRIPT
+======================= -->
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+// Submenú
+document.querySelectorAll(".dropdown-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+        this.nextElementSibling.classList.toggle("active");
+    });
+});
+</script>
+
+</body>
 </html>

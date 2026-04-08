@@ -1,6 +1,56 @@
-<form action="https://formspree.io/f/TU_CODIGO" method="POST">
-  <input type="text" name="nombre" placeholder="Nombre">
-  <input type="email" name="correo" placeholder="Correo">
-  <button type="submit">Enviar</button>
-</form>
-  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Técnico</title>
+    <link rel="stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body class="form-page">
+
+    
+
+<div class="container">
+    <h2>Registro de Material Técnico</h2>
+    
+    
+    <form action="https://script.google.com/macros/s/AKfycbyn0dylC1UIXGYD62hahowOJ_mbRfT3-QxMcVs_-nEqRx5SO-hng0CcjTAtFpsBK5TSug/exec" method="POST">
+      
+        <label>EDIFICIO:</label>
+        <input type="text" name="Edificio" required>
+
+        <label>NIE:</label>
+        <input type="number" name="Nie" required>
+
+        <label>RUTA:</label>
+        <select name="Ruta" required>
+    <option value="">Seleccione una ruta</option>
+    <option value="32">BOG_TR32</option>
+    <option value="33">BOG_TR33</option>
+    <option value="34">BOG_TR34</option>
+    <option value="35">BOG_TR35</option>
+    <option value="36">BOG_TR36</option>
+    <option value="36">BOG_TR43N</option>
+    <option value="36">BOG_TR44N</option>
+    <option value="36">BOG_TR45N</option>
+    <option value="36">BOG_TR46N</option>
+</select>
+
+        <label>ORDEN:</label>
+        <input type="text" name="Orden" required>
+
+        <label>PEDIDO:</label>
+        <input type="text" name="Pedido">
+
+        <label>MATERIALES:</label>
+        <textarea name="materiales" rows="4"></textarea>
+
+        <button type="submit">Enviar Registro</button>
+
+    </form>
+</div>
+
+</body>
+</html>
