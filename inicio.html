@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Descarga de PDF</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f4f6f9;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 380px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #1f3c88;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .file-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            background: #f8fafc;
+            cursor: pointer;
+        }
+
+        .btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #1f3c88;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #162d63;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Descarga de Documentos</h2>
+        <p>Seleccione el archivo PDF para iniciar la descarga</p>
+
+        <input type="file" id="archivo" accept="application/pdf" class="file-input">
+
+        <button class="btn" onclick="descargarPDF()">
+            Descargar PDF
+        </button>
+
+        <div class="footer">
+            © 2026 Tu Empresa
+        </div>
+    </div>
+
+    <script>
+        function descargarPDF() {
+            const input = document.getElementById("archivo");
+
+            if (input.files.length === 0) {
+                alert("Por favor seleccione un archivo PDF");
+                return;
+            }
+
+            const archivo = input.files[0];
+            const url = URL.createObjectURL(archivo);
+
+            const enlace = document.createElement("a");
+            enlace.href = url;
+            enlace.download = archivo.name;
+            enlace.click();
+
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+</body>
+</html>
