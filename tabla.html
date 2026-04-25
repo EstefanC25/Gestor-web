@@ -87,10 +87,12 @@
         .btn-refresh:active { transform: scale(0.97); }
 
         .table-wrap {
-            overflow-x: auto;
-            border: 1px solid #dde3ee;
-            border-radius: 10px;
-        }
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 420px;
+    border: 1px solid #dde3ee;
+    border-radius: 10px;
+}
 
         table {
             width: 100%;
@@ -99,9 +101,11 @@
         }
 
         thead tr {
-            background: #f7f9fc;
-        }
-
+    background: #f7f9fc;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
         th {
             padding: 11px 14px;
             text-align: left;
@@ -112,6 +116,9 @@
             letter-spacing: 0.06em;
             border-bottom: 1px solid #dde3ee;
             white-space: nowrap;
+            position: sticky;   /* ← agregar */
+            top: 0;             /* ← agregar */
+            background: #f7f9fc; /* ← agregar */
         }
 
         td {
