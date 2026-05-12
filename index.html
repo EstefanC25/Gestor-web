@@ -4,33 +4,49 @@
     <meta charset="UTF-8">
     <title>Gestión Documental</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
 
-    <img src="img/ascensor.jgp.avif" alt="Descripción de la imagen">
+<img src="img/ascensor.jgp.avif" alt="Descripción de la imagen">
 
 <!-- =======================
      MENÚ LATERAL
 ======================= -->
 <div class="sidebar" id="sidebar">
-
 <ul>
-<li><a href="#"> Inicio</a></li>
-<li><div class="dropdown-btn"> Servicios</div>
-<ul class="submenu">
 
+    <li><a href="#">Inicio</a></li>
 
-<li><a href="https://whatsform.com/zg8wlv" target="_blank" rel="noopener noreferrer">  Solicitud de materiales </a> </li>
-<li><a href="formulario.html" target="_blank" rel="noopener noreferrer">  Ingreso de material al almacén</a></li>
-<li><a href="prestamos.html" target="_blank" rel="noopener noreferrer"> Préstamos de iluminación</a></li>
+    <!-- TÉCNICOS -->
+    <li>
+        <div class="dropdown-btn">🛠️ Técnicos</div>
+        <ul class="submenu">
+            <li><a href="https://whatsform.com/zg8wlv" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_07</a></li>
+            <li><a href="https://whatsform.com/lpodzr" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_09</a></li>
+        </ul>
+    </li>
+
+    <!-- GESTOR -->
+    <li>
+        <div class="dropdown-btn">🖥️ Gestor</div>
+        <ul class="submenu">
+            <li><a href="formulario.html" target="_blank" rel="noopener noreferrer">Ingreso de material al almacén</a></li>
+            <li><a href="prestamos.html" target="_blank" rel="noopener noreferrer">Préstamos de iluminación</a></li>
+        </ul>
+    </li>
+
+    <!-- REGISTROS -->
+    <li>
+        <div class="dropdown-btn">🗂️ Registros</div>
+        <ul class="submenu">
+            <li><a href="tabla.html" target="_blank" rel="noopener noreferrer">Registros de almacén</a></li>
+            <li><a href="tabla-prestamos.html" target="_blank" rel="noopener noreferrer">Registros de préstamos</a></li>
+        </ul>
+    </li>
+
 </ul>
-<li><a href="tabla.html" target="_blank" rel="noopener noreferrer">🗂️ Registros de almacén</a></li>
-    
-<li><a href="tabla-prestamos.html" target="_blank" rel="noopener noreferrer">🗂️ Registros de préstamos</a></li>
-
 </div>
 
 <!-- BOTÓN -->
@@ -52,7 +68,6 @@ function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 
-// Submenú
 document.querySelectorAll(".dropdown-btn").forEach(btn => {
     btn.addEventListener("click", function() {
         this.nextElementSibling.classList.toggle("active");
