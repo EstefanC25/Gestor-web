@@ -21,7 +21,7 @@
 
         .container {
             width: 100%;
-            max-width: 960px;
+            max-width: 1200px;
             margin: 0 auto;
             background: #ffffff;
             border-radius: 15px;
@@ -40,7 +40,7 @@
 
         .header h2 {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 700;
             color: #1f3c88;
         }
 
@@ -87,61 +87,92 @@
         .btn-refresh:active { transform: scale(0.97); }
 
         .table-wrap {
-    overflow-x: auto;
-    overflow-y: auto;
-    max-height: 420px;
-    border: 1px solid #dde3ee;
-    border-radius: 10px;
-}
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 600px;
+            border: 2px solid #b5d4f4;
+            border-radius: 8px;
+        }
 
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
+            min-width: 700px;
         }
 
         thead tr {
-    background: #f7f9fc;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
+            background: #1f3c88;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
         th {
             padding: 11px 14px;
             text-align: left;
-            font-size: 15px;
+            font-size: 12px;
             font-weight: 700;
-            color: #666;
+            color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-bottom: 1px solid #dde3ee;
+            letter-spacing: 0.07em;
+            border: 1px solid #2a4faa;
             white-space: nowrap;
-            position: sticky;   /* ← agregar */
-            top: 0;             /* ← agregar */
-            background: #f7f9fc; /* ← agregar */
+            position: sticky;
+            top: 0;
+            background: #1f3c88;
         }
 
         td {
-            padding: 11px 14px;
-            border-bottom: 1px solid #f0f3fa;
+            padding: 9px 12px;
+            border: 1px solid #cfd8e3;
             color: #222;
-            max-width: 200px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            vertical-align: top;
+            font-size: 13px;
+            white-space: normal;
+            word-break: break-word;
         }
 
-        tr:last-child td { border-bottom: none; }
-        tbody tr:hover { background: #f7f9fc; }
+        tbody tr:nth-child(even) {
+            background: #f4f7fc;
+        }
+
+        tbody tr:nth-child(odd) {
+            background: #ffffff;
+        }
+
+        tbody tr:hover {
+            background: #ddeeff;
+        }
+
+        /* Columnas con ancho fijo */
+        th:nth-child(1), td:nth-child(1) { min-width: 140px; }
+        th:nth-child(2), td:nth-child(2) { min-width: 80px; }
+        th:nth-child(3), td:nth-child(3) { min-width: 100px; }
+        th:nth-child(4), td:nth-child(4) { min-width: 100px; }
+        th:nth-child(5), td:nth-child(5) { min-width: 70px; text-align: center; }
+        th:nth-child(6), td:nth-child(6) { min-width: 220px; }
 
         .badge {
             display: inline-block;
             padding: 3px 10px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 600;
             background: #e3f2fd;
             color: #1f3c88;
+            border: 1px solid #b5d4f4;
+        }
+
+        .material-item {
+            display: block;
+            padding: 2px 0;
+            border-bottom: 1px dashed #d0d8e8;
+            line-height: 1.5;
+        }
+
+        .material-item:last-child {
+            border-bottom: none;
         }
 
         .footer {
@@ -167,7 +198,6 @@
 
         .volver:hover { text-decoration: underline; }
 
-        /* Estados */
         .estado {
             text-align: center;
             padding: 2.5rem;
@@ -245,14 +275,24 @@
         document.getElementById("total").textContent = "";
 
         fetch(URL_SCRIPT)
-            .then(res => res.json())
-            .then(datos => {
-                todosLosDatos = datos;
-                renderizar(datos);
+    .then(res => res.json())
+    .then(datos => {
+        todosLosDatos = datos.filter(r => r.ESTADO !== "CTEC");
+        renderizar(todosLosDatos);
             })
             .catch(() => {
                 cuerpo.innerHTML = `<tr><td colspan="6" class="estado error">❌ Error al cargar los datos. Verifica que el Apps Script esté publicado correctamente.</td></tr>`;
             });
+    }
+
+    function formatMaterial(material) {
+        if (!material) return "—";
+        return material
+            .split('\n')
+            .map(m => m.trim())
+            .filter(m => m)
+            .map(m => `<span class="material-item">• ${m}</span>`)
+            .join('');
     }
 
     function renderizar(lista) {
@@ -267,12 +307,12 @@
 
         cuerpo.innerHTML = lista.map(r => `
             <tr>
-                <td title="${r.EDIFICIO || ''}">${r.EDIFICIO || "—"}</td>
+                <td>${r.EDIFICIO || "—"}</td>
                 <td>${r.NIE || "—"}</td>
                 <td><span class="badge">${r.RUTA || "—"}</span></td>
                 <td>${r.ORDEN || "—"}</td>
-                <td>${r.PEDIDO || "—"}</td>
-                <td title="${r.MATERIAL || ''}">${r.MATERIAL || "—"}</td>
+                <td style="text-align:center">${r.PEDIDO || "—"}</td>
+                <td>${formatMaterial(r.MATERIAL)}</td>
             </tr>
         `).join("");
 
