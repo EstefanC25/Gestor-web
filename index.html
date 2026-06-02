@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión Documental</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
 </head>
 
@@ -64,6 +64,11 @@
      JAVASCRIPT
 ======================= -->
 <script>
+
+    // Agregar esta línea al inicio
+    if (sessionStorage.getItem("logueado") !== "true") {
+        window.location.href = "login.html";
+    }
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }

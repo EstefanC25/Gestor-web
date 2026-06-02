@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso - Gestión Documental</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #0a1628;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fondo animado */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(31,60,136,0.4) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(79,172,254,0.15) 0%, transparent 40%),
+                        radial-gradient(ellipse at 60% 80%, rgba(31,60,136,0.2) 0%, transparent 40%);
+            animation: bgMove 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes bgMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(2%, 2%); }
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.03em;
+        }
+
+        .logo p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+        }
+
+        .field {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap span {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            opacity: 0.4;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 12px 12px 38px;
+            font-size: 14px;
+            font-family: "Segoe UI", sans-serif;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #4facfe;
+            background: rgba(79,172,254,0.08);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 13px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: "Segoe UI", sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #1f3c88, #4facfe);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: opacity 0.2s, transform 0.1s;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-login:hover { opacity: 0.9; }
+        .btn-login:active { transform: scale(0.98); }
+
+        .error-msg {
+            display: none;
+            margin-top: 1rem;
+            padding: 10px 14px;
+            background: rgba(226,75,74,0.15);
+            border: 1px solid rgba(226,75,74,0.3);
+            border-radius: 8px;
+            font-size: 13px;
+            color: #ff7875;
+            text-align: center;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255,255,255,0.2);
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="logo">
+        <img src="img/vector.jpg" alt="Logo" style="width: 65px; height:65px;">
+        <h1>Gestión Documental</h1>
+        <p>Sistema de control de procesos</p>
+    </div>
+
+    <div class="field">
+        <label>Usuario</label>
+        <div class="input-wrap">
+            <span>👤</span>
+            <input type="text" id="usuario" placeholder="Ingresa tu usuario" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="field">
+        <label>Contraseña</label>
+        <div class="input-wrap">
+            <span>🔒</span>
+            <input type="password" id="clave" placeholder="Ingresa tu contraseña">
+        </div>
+    </div>
+
+    <button class="btn-login" onclick="ingresar()">Ingresar</button>
+
+    <div class="error-msg" id="error-msg">
+        ❌ Usuario o contraseña incorrectos
+    </div>
+
+    <p class="footer-note">MELCOL — Acceso restringido</p>
+</div>
+
+<script>
+    // ⚠️ Cambia estos datos por tu usuario y clave
+    const USUARIO = "admin";
+    const CLAVE = "2026";
+
+    function ingresar() {
+        const usuario = document.getElementById("usuario").value.trim(); 
+        const clave = document.getElementById("clave").value.trim();
+        const errorMsg = document.getElementById("error-msg");
+
+        if (usuario === USUARIO && clave === CLAVE) {
+            // Guardar sesión
+            sessionStorage.setItem("logueado", "true");
+            // Redirigir a la página principal
+            window.location.href = "index.html";
+        } else {
+            errorMsg.style.display = "block";
+            document.getElementById("clave").value = "";
+        }
+    }
+
+    // Permitir Enter para ingresar
+    document.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") ingresar();
+    });
+
+    // Si ya está logueado, ir directo al index
+    if (sessionStorage.getItem("logueado") === "true") {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>
