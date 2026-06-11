@@ -1,4 +1,11 @@
-/* Quitar puntos de lista */
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      background: url('img/logo.jpg') no-repeat center center fixed;
+      background-size: 500px; /* hace que la imagen cubra toda la pantalla */
+    }
+    /* Quitar puntos de lista */
 .sidebar ul {
     list-style: none;
     padding: 0;
@@ -245,4 +252,34 @@
     width: 100%;
     height: 80vh;
     border-radius: 10px;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.main-content {
+  text-align: center; /* centra el contenido */
+  padding: 50px;      /* espacio alrededor */
+}
+
+header h1 {
+  font-size: 3rem;    /* tamaño grande para el título */
+  margin: 0;
+}
+
+header p {
+  font-size: 1.5rem;  /* tamaño más pequeño para el subtítulo */
+  margin: 10px 0 0 0;
+  color: #555;
+}
+
+/* Ajuste responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
 }
