@@ -282,4 +282,9 @@ header p {
   header p {
     font-size: 1rem;
   }
+  body {
+    background-size: contain; /* muestra la imagen completa sin recortarla */
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
