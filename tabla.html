@@ -18,7 +18,7 @@
             min-height: 100vh;
             padding: 2rem 1rem;
             color: #222;
-        }
+        } 
 
         .container {
             width: 100%;
@@ -247,8 +247,7 @@
                     <th>Orden</th>
                     <th>Pedido</th>
                     <th>Material</th>
-                    
-                    
+                       
                 </tr>
             </thead>
             <tbody id="cuerpo">
@@ -298,32 +297,30 @@
             .join('');
     }
 
-    function renderizar(lista) {
-        const cuerpo = document.getElementById("cuerpo");
-        const totalEl = document.getElementById("total");
+function renderizar(lista) {
+    const cuerpo = document.getElementById("cuerpo");
+    const totalEl = document.getElementById("total");
 
-        if (lista.length === 0) {
-            cuerpo.innerHTML = `<tr><td colspan="6" class="estado empty">No se encontraron registros.</td></tr>`;
-            totalEl.textContent = "";
-            return;
-        }
-
-        cuerpo.innerHTML = lista.map(r => `
-            <tr>
-                <td>${r.EDIFICIO || "—"}</td>
-                <td>${r.NIE || "—"}</td>
-                <td><span class="badge">${r.RUTA || "—"}</span></td>
-                <td>${r.ORDEN || "—"}</td>
-                <td style="text-align:center">${r.PEDIDO || "—"}</td>
-                <td>${r.MATERIAL ? formatMaterial(r.MATERIAL) : "—"}</td>
-                <td>
-               
-            </td>
-            </tr>
-        `).join("");
-
-        totalEl.textContent = `${lista.length} registro${lista.length !== 1 ? "s" : ""} encontrado${lista.length !== 1 ? "s" : ""}`;
+    if (lista.length === 0) {
+        cuerpo.innerHTML = `<tr><td colspan="6" class="estado empty">No se encontraron registros.</td></tr>`;
+        totalEl.textContent = "";
+        return;
     }
+
+    cuerpo.innerHTML = lista.map(r => `
+        <tr>
+            <td>${r.EDIFICIO || "—"}</td>
+            <td>${r.NIE || "—"}</td>
+            <td><span class="badge">${r.RUTA || "—"}</span></td>
+            <td>${r.ORDEN || "—"}</td>
+            <td style="text-align:center">${r.PEDIDO || "—"}</td>
+            <td>${r.MATERIAL ? formatMaterial(r.MATERIAL) : "—"}</td>
+            <td>${r.ESTADO || "—"}</td>
+        </tr>
+    `).join("");
+
+    totalEl.textContent = `${lista.length} registro${lista.length !== 1 ? "s" : ""} encontrado${lista.length !== 1 ? "s" : ""}`;
+}
 
     document.getElementById("buscar").addEventListener("input", function () {
         const q = this.value.toLowerCase();
