@@ -153,7 +153,7 @@
         th:nth-child(4), td:nth-child(4) { min-width: 100px; }
         th:nth-child(5), td:nth-child(5) { min-width: 70px; text-align: center; }
         th:nth-child(6), td:nth-child(6) { min-width: 220px; }
-
+        
         .badge {
             display: inline-block;
             padding: 3px 10px;
@@ -246,7 +246,9 @@
                     <th>Ruta</th>
                     <th>Orden</th>
                     <th>Pedido</th>
-                    <th>Materiales</th>
+                    <th>Material</th>
+                    
+                    
                 </tr>
             </thead>
             <tbody id="cuerpo">
@@ -313,7 +315,10 @@
                 <td><span class="badge">${r.RUTA || "—"}</span></td>
                 <td>${r.ORDEN || "—"}</td>
                 <td style="text-align:center">${r.PEDIDO || "—"}</td>
-                <td>${formatMaterial(r.MATERIAL)}</td>
+                <td>${r.MATERIAL ? formatMaterial(r.MATERIAL) : "—"}</td>
+                <td>
+               
+            </td>
             </tr>
         `).join("");
 
