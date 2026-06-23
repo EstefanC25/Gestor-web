@@ -33,42 +33,42 @@
   <h2>Registro de Material Técnico</h2>
   
   <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbxWHn2rJeSXsShh9Bh7SwSbrM2uLBfZI3aRTaU4ed3RC9szATJM_F5yAHSvqrEFOaU/exec" method="POST">
-    <label>EDIFICIO:</label>
-    <input type="text" name="EDIFICIO" required>
+    <label for="edificio">EDIFICIO:</label>
+    <input type="text" id="edificio" name="EDIFICIO" required>
 
-    <label>NIE:</label>
-    <input type="number" name="NIE" required>
+    <label for="nie">NIE:</label>
+    <input type="number" id="nie" name="NIE" required>
 
-    <label>RUTA:</label>
-    <select name="RUTA" required>
-      <option value="">Seleccione una ruta</option>
-      <option value="BOG_TR32">BOG_TR32</option>
-      <option value="BOG_TR33">BOG_TR33</option>
-      <option value="BOG_TR34">BOG_TR34</option>
-      <option value="BOG_TR35">BOG_TR35</option>
-      <option value="BOG_TR36">BOG_TR36</option>
-      <option value="BOG_TR43N">BOG_TR43N</option>
-      <option value="BOG_TR44N">BOG_TR44N</option>
-      <option value="BOG_TR45N">BOG_TR45N</option>
-      <option value="BOG_TR46N">BOG_TR46N</option>
-    </select>
+  <label for="ruta">RUTA:</label>
+  <select id="ruta" name="RUTA" required>
+  <option value="">Seleccione una ruta</option>
+  <option value="BOG_TR32">BOG_TR32</option>
+  <option value="BOG_TR33">BOG_TR33</option>
+  <option value="BOG_TR34">BOG_TR34</option>
+  <option value="BOG_TR35">BOG_TR35</option>
+  <option value="BOG_TR36">BOG_TR36</option>
+  <option value="BOG_TR43N">BOG_TR43N</option>
+  <option value="BOG_TR44N">BOG_TR44N</option>
+  <option value="BOG_TR45N">BOG_TR45N</option>
+  <option value="BOG_TR46N">BOG_TR46N</option>
+</select>
 
-    <label>ORDEN:</label>
-    <input type="text" name="ORDEN" required>
+<label for="orden">ORDEN:</label>
+<input type="text" id="orden" name="ORDEN" required>
 
-    <label>PEDIDO:</label>
-    <input type="text" name="PEDIDO">
+<label for="pedido">PEDIDO:</label>
+<input type="text" id="pedido" name="PEDIDO">
 
-    <label>MATERIALES:</label>
-    <textarea name="MATERIAL" rows="4" required></textarea>
+<label for="material">MATERIALES:</label>
+<textarea id="material" name="MATERIAL" rows="4" required></textarea>
 
-    <label>ESTADO:</label>
-    <select name="ESTADO" required>
-    <option value="">Seleccione un estado</option>
-    <option value="ALMACEN">ALMACEN</option>
-    <option value="ENTREGADO">ENTREGADO</option>
-    <option value="CTEC">CTEC</option>
-    </select>
+<label for="estado">ESTADO:</label>
+<select id="estado" name="ESTADO" required>
+  <option value="">Seleccione un estado</option>
+  <option value="ALMACEN">ALMACEN</option>
+  <option value="ENTREGADO">ENTREGADO</option>
+  <option value="CTEC">CTEC</option>
+</select>
 
     <button type="submit">Enviar Registro</button>
   </form>
