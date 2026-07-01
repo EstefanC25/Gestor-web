@@ -288,3 +288,8 @@ header p {
     background-position: center;
   }
 }
+#mitsuweb {
+    color: #ff0000;
+    font-size: 25PX;
+    font-weight: bold;
+}
