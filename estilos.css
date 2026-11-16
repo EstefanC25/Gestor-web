@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     body {
       margin: 0;
       height: 100vh;
@@ -5,6 +6,26 @@
       background: url('img/logo.jpg') no-repeat center center fixed;
       background-size: 500px; /* hace que la imagen cubra toda la pantalla */
     }
+=======
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url('img/logo.jpg') no-repeat center center fixed;
+  background-size: 500px;
+  opacity: 0;
+  animation: aparecer 1.5s ease-in forwards;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+>>>>>>> 8626c457974c2e93731483e633a05d9bc75e6992
     /* Quitar puntos de lista */
 .sidebar ul {
     list-style: none;
@@ -288,3 +309,11 @@ header p {
     background-position: center;
   }
 }
+<<<<<<< HEAD
+=======
+#mitsuweb {
+    color: #ff0000;
+    font-size: 25PX;
+    font-weight: bold;
+}
+>>>>>>> 8626c457974c2e93731483e633a05d9bc75e6992
