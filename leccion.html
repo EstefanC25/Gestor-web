@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecciones Aprendidas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<div class="leccion-app">
+
+    <!-- MENÚ LATERAL -->
+    <div class="sidebar">
+        <h2>📂 Documentos</h2>
+
+        <button onclick="cambiarPDF('docs2/124.pdf')">📄 Documento 124</button>
+        <button onclick="cambiarPDF('docs2/146.pdf')">📄 Documento 146</button>
+        <button onclick="cambiarPDF('docs2/manual.pdf')">📄 Manual</button>
+
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="contenido">
+
+        <div class="topbar">
+            <span>📄 Visualizador</span>
+            <a id="descargar" href="docs2/124.pdf" download class="btn">⬇ Descargar</a>
+        </div>
+
+        <iframe id="visor" src="docs2/124.pdf"></iframe>
+
+    </div>
+
+</div>
+
+<script>
+function cambiarPDF(ruta) {
+    document.getElementById("visor").src = ruta;
+    document.getElementById("descargar").href = ruta;
+}
+</script>
+
+</body>
+</html>

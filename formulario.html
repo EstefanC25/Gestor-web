@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Técnico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+
+  <style>
+    #popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      display: none;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      font-weight: bold;
+      z-index: 1000;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+
+<body class="form-page">
+<div class="container">
+  <h2>Registro de Material Técnico</h2>
+  
+  <form id="miFormulario" action="https://script.google.com/macros/s/AKfycbxWHn2rJeSXsShh9Bh7SwSbrM2uLBfZI3aRTaU4ed3RC9szATJM_F5yAHSvqrEFOaU/exec" method="POST">
+    <label for="edificio">EDIFICIO:</label>
+    <input type="text" id="edificio" name="EDIFICIO" required>
+
+    <label for="nie">NIE:</label>
+    <input type="number" id="nie" name="NIE" required>
+
+  <label for="ruta">RUTA:</label>
+  <select id="ruta" name="RUTA" required>
+  <option value="">Seleccione una ruta</option>
+  <option value="BOG_TR32">BOG_TR32</option>
+  <option value="BOG_TR33">BOG_TR33</option>
+  <option value="BOG_TR34">BOG_TR34</option>
+  <option value="BOG_TR35">BOG_TR35</option>
+  <option value="BOG_TR36">BOG_TR36</option>
+  <option value="BOG_TR43N">BOG_TR43N</option>
+  <option value="BOG_TR44N">BOG_TR44N</option>
+  <option value="BOG_TR45N">BOG_TR45N</option>
+  <option value="BOG_TR46N">BOG_TR46N</option>
+</select>
+
+<label for="orden">ORDEN:</label>
+<input type="text" id="orden" name="ORDEN" required>
+
+<label for="pedido">PEDIDO:</label>
+<input type="text" id="pedido" name="PEDIDO">
+
+<label for="material">MATERIALES:</label>
+<textarea id="material" name="MATERIAL" rows="4" required></textarea>
+
+<label for="estado">ESTADO:</label>
+<select id="estado" name="ESTADO" required>
+  <option value="">Seleccione un estado</option>
+  <option value="ALMACEN">ALMACEN</option>
+  <option value="ENTREGADO">ENTREGADO</option>
+  <option value="CTEC">CTEC</option>
+</select>
+
+    <button type="submit">Enviar Registro</button>
+  </form>
+</div>
+
+<div id="popup">✅ Registro enviado correctamente</div>
+
+<script>
+document.getElementById("miFormulario").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = this;
+  const data = new FormData(form);
+
+  // 👀 Verifica en consola que los campos se capturan
+  console.log("EDIFICIO:", data.get("EDIFICIO"));
+  console.log("NIE:", data.get("NIE"));
+  console.log("RUTA:", data.get("RUTA"));
+  console.log("ORDEN:", data.get("ORDEN"));
+  console.log("PEDIDO:", data.get("PEDIDO"));
+  console.log("MATERIAL:", data.get("MATERIAL"));
+  console.log("ESTADO:", data.get("ESTADO"));
+
+  fetch(form.action, {
+    method: "POST",
+    body: data
+  })
+  .then(response => response.text())
+  .then(texto => {
+    form.reset();
+    const popup = document.getElementById("popup");
+    popup.style.display = "block";
+    setTimeout(() => popup.style.display = "none", 3000);
+  })
+  .catch(error => {
+    alert("❌ Error al enviar el registro");
+  });
+});
+</script>
+</body>
+</html>
+
