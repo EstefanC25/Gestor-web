@@ -1,93 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>MITSUWEB</title>
-
-    <title>Gestión Documental</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MITSUWEB </title>
 <link rel="icon" type="image/x-icon" href="img/apple-touch-icon.png">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-
+<link rel="stylesheet" href="estilos.css">
 </head>
-
 <body>
 
+<aside class="side" id="side">
+  <div class="brand">
+    <img src="img/imagen001.png" alt="Mitsubishi Electric" class="logo-img">
+    <h1>MITSU<span>WEB</span></h1>
+    <p>Gestión y Control</p>
+  </div>
 
-<!-- =======================
-     MENÚ LATERAL
-======================= -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Inicio</a>
+    <div class="grp" id="g-tecnicos">
+      <button type="button" class="gbtn" aria-expanded="false">
+<svg viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <path d="M14.7 6.3a5 5 0 0 0-6.6 6.6L3 18l3 3 5.1-5.1a5 5 0 0 0 6.6-6.6L14 13l-3-3z"/>
+</svg>
+        Técnicos<svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <ul class="sub"><li><a href="https://whatsform.com/zg8wlv" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_07</a></li><li><a href="https://whatsform.com/lpodzr" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_09</a></li></ul>
+    </div>
+    <div class="grp" id="g-gestor">
+      <button type="button" class="gbtn" aria-expanded="false"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 13l2 2 4-4"/></svg>Gestor<svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <ul class="sub"><li><a href="formulario.html" target="_blank" rel="noopener noreferrer">Ingreso de material al almacén</a></li><li><a href="prestamos.html" target="_blank" rel="noopener noreferrer">Préstamos de iluminación</a></li></ul>
+    </div>
+    <div class="grp" id="g-registros">
+      <button type="button" class="gbtn" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></svg>Registros<svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <ul class="sub"><li><a href="tabla.html" target="_blank" rel="noopener noreferrer">Registros de almacén</a></li><li><a href="tabla-prestamos.html" target="_blank" rel="noopener noreferrer">Registros de préstamos</a></li></ul>
+    </div>
+    <a href="#" id="salir"><svg viewBox="0 0 24 24"><path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9"/></svg>Cerrar Sesión</a>
+  </nav>
 
-<div class="sidebar" id="sidebar">
-<ul>
+  <div class="lema">Trabajamos juntos<br>por un mejor servicio</div>
+</aside>
 
+<div class="main">
+  <header class="top">
+    <button class="burger" id="burger" aria-label="Abrir menú"><svg viewBox="0 0 28 28"><path d="M4 8h20M4 14h20M4 20h20"/></svg></button>
+    <div class="logo">MITSU<span>WEB</span></div>
+    <div class="sub">Sistema de Solicitud de Materiales y Gestión Administrativa</div>
+    <div class="user"><span class="avatar" id="ini">E</span><span id="usuario">Estefan Contreras</span></div>
+  </header>
 
-    <li><a href="#">Inicio</a></li>
+  <div class="content">
+    <section class="hero" id="hero">
+      <div>
+        <h2>MITSU<span>WEB</span></h2>
+        <p>Solicitud de Materiales y Gestión Administrativa</p>
+      </div>
+      <div class="valores"><span>Eficiencia</span><span>Control</span><span>Seguridad</span></div>
+    </section>
 
-    <li><a href="#" id="mitsuweb">MITSUWEB</a></li>
+    <div class="wrap">
+      <div class="cards">
 
- 
-    <!-- TÉCNICOS -->
-    <li>
-        <div class="dropdown-btn">🛠️ Técnicos</div>
-        <ul class="submenu">
-            <li><a href="https://whatsform.com/zg8wlv" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_07</a></li>
-            <li><a href="https://whatsform.com/lpodzr" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_09</a></li>
-        </ul>
-    </li>
+        <button type="button" class="card c1" data-open="g-tecnicos">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.5h11L21 7H6"/></svg>
+          <h3>Solicitar Materiales</h3><p>Realiza tu solicitud de materiales fácilmente</p>
+          <span class="go"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+        </button>
 
-    <!-- GESTOR -->
-    <li>
-        <div class="dropdown-btn">🖥️ Gestor</div>
-        <ul class="submenu">
-            <li><a href="formulario.html" target="_blank" rel="noopener noreferrer">Ingreso de material al almacén</a></li>
-            <li><a href="prestamos.html" target="_blank" rel="noopener noreferrer">Préstamos de iluminación</a></li>
-        </ul>
-    </li>
+        <button type="button" class="card c2" data-open="g-registros">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></svg>
+          <h3>Documentos</h3><p>Consulta y descarga documentos técnicos</p>
+          <span class="go"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+        </button>
+        <button type="button" class="card c3" data-open="g-gestor">
+          <svg class="ic" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 13l2 2 4-4"/></svg>
+          <h3>Órdenes de Trabajo</h3><p>Gestiona tus órdenes de trabajo</p>
+          <span class="go"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+        </button>
+        <button type="button" class="card c4" data-open="g-registros">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M5 21V12M12 21V4M19 21V9"/></svg>
+          <h3>Reportes</h3><p>Consulta reportes y estadísticas</p>
+          <span class="go"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
+        </button>
+      </div>
 
-    <!-- REGISTROS -->
-    <li>
-        <div class="dropdown-btn">🗂️ Registros</div>
-        <ul class="submenu">
-            <li><a href="tabla.html" target="_blank" rel="noopener noreferrer">Registros de almacén</a></li>
-            <li><a href="tabla-prestamos.html" target="_blank" rel="noopener noreferrer">Registros de préstamos</a></li>
-        </ul>
-    </li>
+      <div class="grid2">
+        <section class="panel">
+          <header>Registros de ingreso alamcen <a href="tabla.html" target="_blank" rel="noopener noreferrer">Ver todas</a></header>
+          <div class="tabla">
+            <table>
+              <thead><tr><th>#</th><th>Fecha</th><th>Material</th><th>Estado</th><th>Acciones</th></tr></thead>
+              <tbody id="filas"></tbody>
+            </table>
+          </div>
+        </section>
 
-</ul>
+        <aside>
+          <section class="panel notis">
+            <header>Notificaciones <span class="pill" id="nNoti">0</span></header>
+            <div id="notis"></div>
+          </section>
+          <div class="pie"><svg width="34" height="30" viewBox="0 0 60 54" aria-hidden="true"><g fill="#e60012"><path d="M30 0l12 21H18z"/><path d="M18 24l-12 21h24z"/><path d="M42 24l12 21H30z"/></g></svg>Elevando juntos el futuro</div>
+        </aside>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- BOTÓN -->
-<button class="open-btn" onclick="toggleMenu()">☰</button>
-
-<!-- CONTENIDO -->
-<div class="main-content">
-    <header>
-        <h1>Gestión Documental</h1>
-        <p>Sistema de control de procesos</p>
-    </header>
-</div>
-
-<!-- =======================
-     JAVASCRIPT
-======================= -->
 <script>
+if(sessionStorage.getItem("logueado")!=="true"){ location.href="login.html"; }
 
-    // Agregar esta línea al inicio
-    if (sessionStorage.getItem("logueado") !== "true") {
-        window.location.href = "login.html";
-    }
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
+/* ====== CONFIGURA AQUÍ ====== */
+const APPS_SCRIPT_URL = "";          // URL de tu Apps Script (/exec). Vacío = datos de ejemplo
+const HOJA = "SOLICITUD DE MATERIALES";
+const HERO_IMG = "";                 // opcional: URL de una foto para el banner (ej. "img/hero.jpg")
+const USUARIO = "Estefan Contreras";
+/* ============================ */
+
+const DEMO = [
+  {id:"SM-00125", fecha:"2026-11-13", material:"Guías de ascensor", estado:"En proceso"},
+  {id:"SM-00124", fecha:"2026-11-10", material:"Contactores",       estado:"Aprobada"},
+  {id:"SM-00123", fecha:"2026-11-08", material:"Cables de potencia",estado:"Aprobada"},
+  {id:"SM-00122", fecha:"2026-11-05", material:"Sensores",          estado:"Rechazada"}
+];
+const NOTIS = [
+  {t:"Tu solicitud SM-00125 ha sido actualizada a: En proceso.", f:"13/11/2026 - 14:30"},
+  {t:"Nuevo documento disponible en la sección Documentos.",     f:"12/11/2026 - 09:15"}
+];
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const clase = e => ({"en proceso":"b-proceso","aprobada":"b-aprobada","rechazada":"b-rechazada"}[String(e).toLowerCase()] || "b-pendiente");
+
+function pintar(rows){
+  $("filas").innerHTML = rows.length ? rows.map(r => `
+    <tr>
+      <td>${esc(r.id)}</td><td>${esc(r.fecha)}</td><td>${esc(r.material)}</td>
+      <td><span class="badge ${clase(r.estado)}">${esc(r.estado)}</span></td>
+      <td><a class="eye" href="tabla.html" aria-label="Ver ${esc(r.id)}"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
+    </tr>`).join("") : `<tr><td colspan="5" class="vacio">Aún no hay solicitudes. Crea la primera desde "Solicitar Materiales".</td></tr>`;
 }
 
-document.querySelectorAll(".dropdown-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-        this.nextElementSibling.classList.toggle("active");
-    });
-});
-</script>
+function normalizar(data){
+  const lista = Array.isArray(data) ? data : (data.data || data.rows || []);
+  return lista.slice(-4).reverse().map((r,i) => ({
+    id:       r.ID || r.NIE || "SM-" + String(lista.length - i).padStart(5,"0"),
+    fecha:    String(r.FECHA || r["Marca temporal"] || "").slice(0,10),
+    material: r.MATERIALES || r.MATERIAL || "",
+    estado:   r.ESTADO || "Pendiente"
+  }));
+}
 
+async function cargar(){
+  if(!APPS_SCRIPT_URL){ pintar(DEMO); return; }
+  try{
+    const r = await fetch(APPS_SCRIPT_URL + "?hoja=" + encodeURIComponent(HOJA));
+    pintar(normalizar(await r.json()));
+  }catch(e){
+    console.error(e);
+    pintar(DEMO);
+  }
+}
+
+$("notis").innerHTML = NOTIS.map(n => `<div class="n"><span class="dot"></span><div>${esc(n.t)}<small>${esc(n.f)}</small></div></div>`).join("");
+$("nNoti").textContent = NOTIS.length;
+$("usuario").textContent = USUARIO;
+$("ini").textContent = USUARIO.charAt(0).toUpperCase();
+if(HERO_IMG) $("hero").style.setProperty("--hero-img", `url("${HERO_IMG}")`);
+$("burger").onclick = () => $("side").classList.toggle("open");
+function abrir(id){
+  const g=$(id); g.classList.add("open");
+  g.querySelector(".gbtn").setAttribute("aria-expanded","true");
+  $("side").classList.add("open");
+}
+document.querySelectorAll(".gbtn").forEach(b=>b.onclick=()=>{
+  const o=b.parentElement.classList.toggle("open");
+  b.setAttribute("aria-expanded",o);
+});
+document.querySelectorAll("[data-open]").forEach(c=>c.onclick=()=>abrir(c.dataset.open));
+$("salir").onclick=e=>{ e.preventDefault(); sessionStorage.removeItem("logueado"); location.href="login.html"; };
+cargar();
+</script>
 </body>
 </html>
