@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MITSUWEB </title>
+<title>MITSUWEB | Gestión Documental</title>
 <link rel="icon" type="image/x-icon" href="img/apple-touch-icon.png">
 <link rel="stylesheet" href="estilos.css">
 </head>
@@ -19,16 +19,7 @@
   <nav class="nav" id="nav">
     <a href="index.html" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Inicio</a>
     <div class="grp" id="g-tecnicos">
-      <button type="button" class="gbtn" aria-expanded="false">
-<svg viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="1.8"
-     stroke-linecap="round"
-     stroke-linejoin="round">
-    <path d="M14.7 6.3a5 5 0 0 0-6.6 6.6L3 18l3 3 5.1-5.1a5 5 0 0 0 6.6-6.6L14 13l-3-3z"/>
-</svg>
-        Técnicos<svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button type="button" class="gbtn" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.5h11L21 7H6"/></svg>Técnicos<svg class="chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
       <ul class="sub"><li><a href="https://whatsform.com/zg8wlv" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_07</a></li><li><a href="https://whatsform.com/lpodzr" target="_blank" rel="noopener noreferrer">Solicitud de materiales BOG_09</a></li></ul>
     </div>
     <div class="grp" id="g-gestor">
@@ -55,22 +46,23 @@
 
   <div class="content">
     <section class="hero" id="hero">
-      <div>
-        <h2>MITSU<span>WEB</span></h2>
-        <p>Solicitud de Materiales y Gestión Administrativa</p>
+      <div class="hero-txt">
+        <div>
+          <h2>MITSU<span>WEB</span></h2>
+          <p>Solicitud de Materiales y Gestión Administrativa</p>
+        </div>
+        <div class="valores"><span>Eficiencia</span><span>Control</span><span>Seguridad</span></div>
       </div>
-      <div class="valores"><span>Eficiencia</span><span>Control</span><span>Seguridad</span></div>
+      <img class="hero-img" id="heroImg" alt="" hidden>
     </section>
 
     <div class="wrap">
       <div class="cards">
-
         <button type="button" class="card c1" data-open="g-tecnicos">
           <svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.5h11L21 7H6"/></svg>
           <h3>Solicitar Materiales</h3><p>Realiza tu solicitud de materiales fácilmente</p>
           <span class="go"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
         </button>
-
         <button type="button" class="card c2" data-open="g-registros">
           <svg class="ic" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></svg>
           <h3>Documentos</h3><p>Consulta y descarga documentos técnicos</p>
@@ -90,87 +82,104 @@
 
       <div class="grid2">
         <section class="panel">
-          <header>Registros de ingreso alamcen <a href="tabla.html" target="_blank" rel="noopener noreferrer">Ver todas</a></header>
+          <header>Registros de almacén
+            <div class="acc"><input class="buscar" id="buscar" type="text" placeholder="Buscar registros..." aria-label="Buscar registros"><button class="btn-act" id="act" type="button">↻ Actualizar</button></div>
+          </header>
           <div class="tabla">
             <table>
-              <thead><tr><th>#</th><th>Fecha</th><th>Material</th><th>Estado</th><th>Acciones</th></tr></thead>
-              <tbody id="filas"></tbody>
+              <thead><tr><th>Edificio</th><th>NIE</th><th>Ruta</th><th>Orden</th><th>Pedido</th><th>Material</th><th>Estado</th><th>Acciones</th></tr></thead>
+              <tbody id="filas"><tr><td colspan="8" class="vacio">Cargando registros...</td></tr></tbody>
             </table>
           </div>
+          <div class="total" id="total"></div>
         </section>
 
-        <aside>
-          <section class="panel notis">
-            <header>Notificaciones <span class="pill" id="nNoti">0</span></header>
-            <div id="notis"></div>
-          </section>
-          <div class="pie"><svg width="34" height="30" viewBox="0 0 60 54" aria-hidden="true"><g fill="#e60012"><path d="M30 0l12 21H18z"/><path d="M18 24l-12 21h24z"/><path d="M42 24l12 21H30z"/></g></svg>Elevando juntos el futuro</div>
-        </aside>
       </div>
     </div>
   </div>
 </div>
 
+<dialog id="detalle" aria-labelledby="dTitulo">
+  <div class="dh"><h3 id="dTitulo">Detalle del registro</h3><button type="button" id="dCerrar" aria-label="Cerrar">✕</button></div>
+  <dl id="dCuerpo"></dl>
+</dialog>
+
 <script>
 if(sessionStorage.getItem("logueado")!=="true"){ location.href="login.html"; }
 
 /* ====== CONFIGURA AQUÍ ====== */
-const APPS_SCRIPT_URL = "";          // URL de tu Apps Script (/exec). Vacío = datos de ejemplo
-const HOJA = "SOLICITUD DE MATERIALES";
-const HERO_IMG = "";                 // opcional: URL de una foto para el banner (ej. "img/hero.jpg")
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyn0dylC1UIXGYD62hahowOJ_mbRfT3-QxMcVs_-nEqRx5SO-hng0CcjTAtFpsBK5TSug/exec"; // misma URL de tabla.html
+const HERO_IMG = "img/imagen2";    // foto del banner, sin extensión (prueba png, jpg, jpeg y webp)
 const USUARIO = "Estefan Contreras";
 /* ============================ */
 
-const DEMO = [
-  {id:"SM-00125", fecha:"2026-11-13", material:"Guías de ascensor", estado:"En proceso"},
-  {id:"SM-00124", fecha:"2026-11-10", material:"Contactores",       estado:"Aprobada"},
-  {id:"SM-00123", fecha:"2026-11-08", material:"Cables de potencia",estado:"Aprobada"},
-  {id:"SM-00122", fecha:"2026-11-05", material:"Sensores",          estado:"Rechazada"}
-];
-const NOTIS = [
-  {t:"Tu solicitud SM-00125 ha sido actualizada a: En proceso.", f:"13/11/2026 - 14:30"},
-  {t:"Nuevo documento disponible en la sección Documentos.",     f:"12/11/2026 - 09:15"}
-];
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const clase = e => ({"en proceso":"b-proceso","aprobada":"b-aprobada","rechazada":"b-rechazada"}[String(e).toLowerCase()] || "b-pendiente");
-
+let todos = [], vista = [];
+function materiales(m){
+  const l = String(m||"").split("\n").map(x=>x.trim()).filter(Boolean);
+  return l.length ? l.map(x=>`<span class="material-item">• ${esc(x)}</span>`).join("") : "—";
+}
+function mensaje(t){ $("filas").innerHTML = `<tr><td colspan="8" class="vacio">${t}</td></tr>`; $("total").textContent = ""; }
 function pintar(rows){
-  $("filas").innerHTML = rows.length ? rows.map(r => `
+  vista = rows;
+  if(!rows.length) return mensaje("No se encontraron registros.");
+  $("filas").innerHTML = rows.map((r,i) => `
     <tr>
-      <td>${esc(r.id)}</td><td>${esc(r.fecha)}</td><td>${esc(r.material)}</td>
-      <td><span class="badge ${clase(r.estado)}">${esc(r.estado)}</span></td>
-      <td><a class="eye" href="tabla.html" aria-label="Ver ${esc(r.id)}"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></a></td>
-    </tr>`).join("") : `<tr><td colspan="5" class="vacio">Aún no hay solicitudes. Crea la primera desde "Solicitar Materiales".</td></tr>`;
+      <td>${esc(r.EDIFICIO||"—")}</td><td>${esc(r.NIE||"—")}</td><td>${esc(r.RUTA||"—")}</td>
+      <td>${esc(r.ORDEN||"—")}</td><td>${esc(r.PEDIDO||"—")}</td>
+      <td>${materiales(r.MATERIAL)}</td>
+      <td><span class="badge b-pendiente">${esc(r.ESTADO||"—")}</span></td>
+      <td><button type="button" class="eye" data-i="${i}" aria-label="Ver detalle del registro"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></td>
+    </tr>`).join("");
+  $("total").textContent = rows.length + (rows.length===1 ? " registro encontrado" : " registros encontrados");
 }
-
-function normalizar(data){
-  const lista = Array.isArray(data) ? data : (data.data || data.rows || []);
-  return lista.slice(-4).reverse().map((r,i) => ({
-    id:       r.ID || r.NIE || "SM-" + String(lista.length - i).padStart(5,"0"),
-    fecha:    String(r.FECHA || r["Marca temporal"] || "").slice(0,10),
-    material: r.MATERIALES || r.MATERIAL || "",
-    estado:   r.ESTADO || "Pendiente"
-  }));
-}
-
 async function cargar(){
-  if(!APPS_SCRIPT_URL){ pintar(DEMO); return; }
+  mensaje("Cargando registros...");
   try{
-    const r = await fetch(APPS_SCRIPT_URL + "?hoja=" + encodeURIComponent(HOJA));
-    pintar(normalizar(await r.json()));
+    const r = await fetch(APPS_SCRIPT_URL);
+    todos = (await r.json()).filter(x => x.ESTADO !== "CTEC");
+    filtrar();
   }catch(e){
     console.error(e);
-    pintar(DEMO);
+    mensaje("No se pudieron cargar los registros. Revisa que el Apps Script esté publicado.");
   }
 }
+function filtrar(){
+  const q = $("buscar").value.toLowerCase();
+  pintar(todos.filter(r => Object.values(r).some(v => String(v).toLowerCase().includes(q))));
+}
+$("filas").addEventListener("click", e => {
+  const b = e.target.closest(".eye");
+  if(b) detalle(vista[b.dataset.i]);
+});
+function detalle(r){
+  if(!r) return;
+  $("dCuerpo").innerHTML = Object.entries(r)
+    .filter(([k,v]) => String(v ?? "").trim() !== "")
+    .map(([k,v]) => {
+      const t = k.charAt(0).toUpperCase() + k.slice(1).toLowerCase();
+      const val = k.toUpperCase()==="MATERIAL" ? materiales(v) : esc(v);
+      return `<dt>${esc(t)}</dt><dd>${val}</dd>`;
+    }).join("");
+  $("detalle").showModal();
+}
+$("dCerrar").onclick = () => $("detalle").close();
+$("detalle").addEventListener("click", e => { if(e.target === $("detalle")) $("detalle").close(); });
+$("buscar").addEventListener("input", filtrar);
+$("act").onclick = cargar;
 
-$("notis").innerHTML = NOTIS.map(n => `<div class="n"><span class="dot"></span><div>${esc(n.t)}<small>${esc(n.f)}</small></div></div>`).join("");
-$("nNoti").textContent = NOTIS.length;
 $("usuario").textContent = USUARIO;
 $("ini").textContent = USUARIO.charAt(0).toUpperCase();
-if(HERO_IMG) $("hero").style.setProperty("--hero-img", `url("${HERO_IMG}")`);
+if(HERO_IMG){
+  const im = $("heroImg");
+  const exts = /\.(png|jpe?g|webp|gif|svg)$/i.test(HERO_IMG) ? [""] : [".png",".jpg",".jpeg",".webp"];
+  let k = 0;
+  im.onload = () => { im.hidden = false; $("hero").classList.add("con-img"); };
+  im.onerror = () => { if(++k < exts.length) im.src = HERO_IMG + exts[k]; };
+  im.src = HERO_IMG + exts[0];
+}
 $("burger").onclick = () => $("side").classList.toggle("open");
 function abrir(id){
   const g=$(id); g.classList.add("open");
